@@ -15,13 +15,13 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.android.ts_calibrate">
+        package="com.android.jet_calibrate">
     <uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES"/>
     
     <application android:label="@string/app_label"
             android:icon="@drawable/app_icon">
 
-        <activity android:name="TsCalibrate">
+        <activity android:name="JetCalibrate">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />

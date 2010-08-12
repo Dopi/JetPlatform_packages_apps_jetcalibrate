@@ -5,6 +5,6 @@ LOCAL_MODULE_TAGS := eng
 
 LOCAL_SRC_FILES := $(call all-subdir-java-files)
 
-LOCAL_PACKAGE_NAME := TsCalibrate
+LOCAL_PACKAGE_NAME := JetCalibrate
 
 include $(BUILD_PACKAGE)
