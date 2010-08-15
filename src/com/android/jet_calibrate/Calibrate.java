@@ -1,4 +1,4 @@
-package com.android.ts_calibrate;
+package com.android.jet_calibrate;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,7 +41,7 @@ public class Calibrate {
         // Get determinant of matrix -- check if determinant is too small
         det = n * (x2 * y2 - xy * xy) + x * (xy * y - x * y2) + y * (x * xy - y * x2);
         if (det < 0.1 && det > -0.1) {
-            Log.i("ts_calibrate: determinant is too small -- %f\n", "" + det);
+            Log.i("jet_calibrate: determinant is too small -- %f\n", "" + det);
             return false;
         }
 

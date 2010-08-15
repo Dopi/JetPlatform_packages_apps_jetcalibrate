@@ -12,7 +12,7 @@
 ** See the License for the specific language governing permissions and 
 ** limitations under the License.
 */
-package com.android.ts_calibrate;
+package com.android.jet_calibrate;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -33,10 +33,10 @@ import android.view.KeyEvent;
 import android.widget.Toast;
 import android.os.SystemProperties;
 
-import com.android.ts_calibrate.R;
+import com.android.jet_calibrate.R;
 
-public class TsCalibrate extends Activity {
-    final String TAG = "TsCalibration";
+public class JetCalibrate extends Activity {
+    final String TAG = "JetCalibration";
 
     final int UI_SCREEN_WIDTH = 480;
     final int UI_SCREEN_HEIGHT = 800;
@@ -71,13 +71,13 @@ public class TsCalibrate extends Activity {
     protected Dialog onCreateDialog(int id) {
         switch (id) {
         case DIALOG_FINISH_CALIBRATE:
-            return new AlertDialog.Builder(TsCalibrate.this)
+            return new AlertDialog.Builder(JetCalibrate.this)
                 .setIcon(R.drawable.alert_dialog_icon)
                 .setTitle(R.string.alert_finish_dialog_title)
                 .setPositiveButton(R.string.alert_dialog_ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         Toast.makeText(getBaseContext(), "Calibrate Done!", Toast.LENGTH_SHORT).show();
-                        TsCalibrate.this.finish();
+                        JetCalibrate.this.finish();
                     }
                 })
                 .create();
@@ -91,19 +91,19 @@ public class TsCalibrate extends Activity {
         myview = new CrossView(this);
         setContentView(myview);
 
-        SystemProperties.set("ts.calibrate", "start");
+        SystemProperties.set("jet.calibrate", "start");
 
         cal = new Calibrate();
         direction = 0;
 
         myview.setOnTouchListener(new OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
-                Log.i("TsCalibrate.OnTouch", event.getX() + "," + event.getY() + ",------> DownTime : " + event.getDownTime());
+                Log.i("JetCalibrate.OnTouch", event.getX() + "," + event.getY() + ",------> DownTime : " + event.getDownTime());
 
                 v.invalidate();
                 x1 = (int)(( event.getX() * 4095 ) / 479);
                 y1 = (int)(( event.getY() * 4095 ) / 799);
-                Log.i("TsCalibrate.OnTouch", " --->x1=" + x1 + "," + " --->y1=" + y1);
+                Log.i("JetCalibrate.OnTouch", " --->x1=" + x1 + "," + " --->y1=" + y1);
 
                 if (direction <= 4) {
                     cal.get_sample(direction, x1, y1, xList[direction], yList[direction]);
@@ -119,15 +119,15 @@ public class TsCalibrate extends Activity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
         case KeyEvent.KEYCODE_BACK:
-            SystemProperties.set("ts.calibrate", "done");
+            SystemProperties.set("jet.calibrate", "done");
             Toast.makeText(getBaseContext(), "Calibrate BACK key cancel!", Toast.LENGTH_SHORT).show();
-            TsCalibrate.this.finish();
+            JetCalibrate.this.finish();
             break;
         case KeyEvent.KEYCODE_MENU:
             if(direction == 5) {
                 direction++;
                 cal.calibrate_main();
-                SystemProperties.set("ts.calibrate", "done");
+                SystemProperties.set("jet.calibrate", "done");
                 showDialog(DIALOG_FINISH_CALIBRATE);
             }
             break;
