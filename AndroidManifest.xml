@@ -17,6 +17,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.android.jet_calibrate">
     <uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES"/>
+    <uses-permission android:name="android.permission.READ_OWNER_DATA"/>
+    <uses-permission android:name="android.permission.WRITE_OWNER_DATA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     
     <application android:label="@string/app_label"
             android:icon="@drawable/app_icon">
